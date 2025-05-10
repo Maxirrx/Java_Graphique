@@ -21,20 +21,9 @@ public class MenuController {
     @FXML
     protected MenuItem bListeEtud, bAjouterEtud, bListeSection, bAjouterSection, bQuitter, bAccueil;
 
-    @FXML
-    protected Label idbv;
 
 
-    @FXML
-    public void closescene() {
-        if (this.idbv != null) {
-        Stage stageP = (Stage) idbv.getScene().getWindow();
-        stageP.close();
-        }else{
-            System.out.println("Le Stage");
-        }
 
-    }
 
 
 
@@ -45,9 +34,10 @@ public class MenuController {
 
     @FXML
     public void bAccueilClick(ActionEvent event) {
+        Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        StageAfermer.close();
 
         try {
-            closescene();
 
             // Charger le fichier FXML pour la pop-up
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_accueil.fxml"));
@@ -75,9 +65,11 @@ public class MenuController {
 
     @FXML
     public void bListEtudClick(ActionEvent event) {
+        Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        StageAfermer.close();
 
         try {
-            closescene();
+
 
             // Charger le fichier FXML
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_liste_etudiant.fxml"));
@@ -106,8 +98,11 @@ public class MenuController {
 
     @FXML
     public void bAjouterEtudClick(ActionEvent event) {
-        try{
-            closescene();
+        Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        StageAfermer.close();
+
+        try {
+
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_ajout_etudiant.fxml"));
             Parent root = fxmlLoader.load();
@@ -136,8 +131,11 @@ public class MenuController {
 
     @FXML
     public void bListeSectionClick(ActionEvent event) {
+        Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        StageAfermer.close();
+
         try {
-            closescene();
+
 
             // Charger le fichier FXML
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_liste_etudiant.fxml"));
