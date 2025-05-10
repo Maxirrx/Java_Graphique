@@ -1,4 +1,6 @@
 insert into utilisateur (loginutilisateur, mdputilisateur) values ('Magali','mgo');
+insert into utilisateur (loginutilisateur, mdputilisateur) values ('azer','azer');
+
 
 insert into section (libelleSection) values ('Licence développeur et infrastructure'), ('Management de projet ');
 

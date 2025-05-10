@@ -7,6 +7,7 @@ public class Etudiant {
     private int idEtudiant;
     private SimpleStringProperty nomEtudiant;
     private SimpleStringProperty prenomEtudiant;
+    private int idSection;
 
     public int getIdSection() {
         return idSection;
@@ -16,12 +17,13 @@ public class Etudiant {
         this.idSection = idSection;
     }
 
-    private int idSection;
 
-    public Etudiant(int idEtudiant, String nomEtudiant, String prenomEtudiant) {
+
+    public Etudiant(int idEtudiant, String nomEtudiant, String prenomEtudiant, int idSection) {
         this.idEtudiant = idEtudiant;
         this.nomEtudiant = new SimpleStringProperty(nomEtudiant);
         this.prenomEtudiant = new SimpleStringProperty(prenomEtudiant);
+        this.idSection = idSection;
 
     }
 

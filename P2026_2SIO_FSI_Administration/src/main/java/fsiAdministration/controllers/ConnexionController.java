@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -25,7 +26,7 @@ public class ConnexionController implements Initializable {
     @FXML
     private TextField tfLogin;
     @FXML
-    private TextField tfMDP;
+    private PasswordField tfMDP;
     @FXML
     private Button bConnexion;
 
@@ -37,6 +38,8 @@ public class ConnexionController implements Initializable {
 
         UtilisateurDAO userDAO = new UtilisateurDAO();
         Utilisateur user = userDAO.find(login, mdp);
+
+        mdp = "plus de mot de passe";
 
         if (user.getLoginUtilisateur() != null) {
             showAccueil();

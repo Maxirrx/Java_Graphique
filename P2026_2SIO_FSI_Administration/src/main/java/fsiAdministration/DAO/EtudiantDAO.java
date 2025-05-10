@@ -14,16 +14,12 @@ public class EtudiantDAO extends DAO<Etudiant>{
     public boolean create(Etudiant obj) {
         boolean controle = false;
         try{
-            int id = lastId();
-            id++;
-            obj.setIdEtudiant(id);
             Connection connect = BDDManager.getInstance();
-            String sql = "Insert into Etudiant(idEtudiant, nomEtudiant, prenomEtudiant, idSection) values (?,?,?,?);";
+            String sql = "Insert into Etudiant(nomEtudiant, prenomEtudiant, idSection) values (?,?,?);";
             PreparedStatement statement = connect.prepareStatement(sql);
-            statement.setInt(1,obj.getIdEtudiant());
-            statement.setString(2,obj.getNomEtudiant());
-            statement.setString(3,obj.getPrenomEtudiant());
-            statement.setInt(4,1);
+            statement.setString(1,obj.getNomEtudiant());
+            statement.setString(2,obj.getPrenomEtudiant());
+            statement.setInt(3,obj.getIdSection());
 
             int rowsInserer = statement.executeUpdate();
             if (rowsInserer > 0) {
@@ -37,31 +33,48 @@ public class EtudiantDAO extends DAO<Etudiant>{
         return controle;
     }
 
-    public int lastId(){
-        int controle = 1;
 
-        try {
-            Connection connect = BDDManager.getInstance();
-
-            ResultSet result = connect.createStatement().executeQuery("select max(idEtudiant) from Etudiant ");
-            if(result.next()){
-                controle = result.getInt(1);
-            }
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return controle;
-    }
 
     @Override
     public boolean delete(Etudiant obj) {
-        return false;
+        String sql = "DELETE FROM Etudiant WHERE id = ?";
+        try {
+             Connection connect = BDDManager.getInstance();
+             PreparedStatement statement = connect.prepareStatement(sql);
+
+            statement.setInt(1, obj.getIdEtudiant());
+
+            int rowsDeleted = statement.executeUpdate();
+            return rowsDeleted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean update(Etudiant obj) {
-        return false;
+        boolean controle = false;
+        try {
+            Connection connect = BDDManager.getInstance();
+            String sql = "UPDATE Etudiant SET nomEtudiant = ?, prenomEtudiant = ?, idSection = ? WHERE idEtudiant = ?";
+
+            PreparedStatement statement = connect.prepareStatement(sql);
+            statement.setString(1, obj.getNomEtudiant());
+            statement.setString(2, obj.getPrenomEtudiant());
+            statement.setInt(3, obj.getIdSection());
+            statement.setInt(4, obj.getIdEtudiant());
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                controle = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return controle;
     }
 
     @Override
@@ -84,7 +97,8 @@ public class EtudiantDAO extends DAO<Etudiant>{
                 etud = new Etudiant(
                         rs.getInt("idEtudiant"),
                         rs.getString ("nomEtudiant"),
-                        rs.getString("prenomEtudiant")
+                        rs.getString("prenomEtudiant"),
+                        rs.getInt("idSection")
                         );
                 mesEtud.add(etud);
             }

@@ -81,12 +81,12 @@
       </VBox>
       <HBox layoutY="239.0" prefHeight="100.0" prefWidth="729.0">
          <children>
-            <Button fx:id="bEnregistrer" mnemonicParsing="false" onAction="#bEnregistrerClick" prefHeight="39.0" prefWidth="166.0" text="ENREGISTRERR" textFill="#024010">
+            <Button fx:id="bEnregistrer" mnemonicParsing="false" onAction="#bEnregistrerClick" prefHeight="39.0" prefWidth="166.0" text="ENREGISTRER" textFill="#024010">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="bEffacer" mnemonicParsing="false" onAction="#bEffacerClick" prefHeight="39.0" prefWidth="183.0" text="EFFACE" textFill="#024010">
+            <Button fx:id="bEffacer" mnemonicParsing="false" onAction="#bEffacerClick" prefHeight="39.0" prefWidth="183.0" text="EFFACER" textFill="#024010">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
