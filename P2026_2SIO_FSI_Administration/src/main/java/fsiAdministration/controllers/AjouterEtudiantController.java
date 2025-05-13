@@ -31,7 +31,7 @@ public class AjouterEtudiantController extends MenuController implements Initial
     @FXML
     private Button bRetour;
     @FXML
-    private ListView<String> lvSectionEtud ;
+    private ListView<Section> lvSectionEtud ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -39,13 +39,10 @@ public class AjouterEtudiantController extends MenuController implements Initial
         List<Section> lessections = new ArrayList<>();
         SectionDAO sectiondao = new SectionDAO();
         lessections = sectiondao.findAll();
-        List<String> libsec = new ArrayList<>();
-        for (Section section : lessections) {
-            libsec.add(section.getLibelleSection());
-        }
 
 
-        ObservableList<String> section = FXCollections.observableArrayList(libsec);
+
+        ObservableList<Section> section = FXCollections.observableArrayList(lessections);
         lvSectionEtud.setItems(section);
     }
 
@@ -86,14 +83,15 @@ public class AjouterEtudiantController extends MenuController implements Initial
 
         String nom= tfNomEtud.getText();
         String prenom = tfPrenomEtud.getText();
-        int section = lvSectionEtud.getEditingIndex();
+        int section = lvSectionEtud.getItems().get(lvSectionEtud.getSelectionModel().getSelectedIndex()).getIdSection();
 
-        Etudiant newEtud = new Etudiant(0,nom,prenom, section);
+        if(!tfNomEtud.getText().isEmpty() && tfPrenomEtud.getText() != "" && !lvSectionEtud.getItems().isEmpty()) {
+            Etudiant newEtud = new Etudiant(0, nom, prenom, section);
+            System.out.println("on est bon");
 
-
-        EtudiantDAO etudDAO = new EtudiantDAO();
-        etudDAO.create(newEtud);
-
+            EtudiantDAO etudDAO = new EtudiantDAO();
+            etudDAO.create(newEtud);
+        }
 
     }
 
