@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class BDDManager {
 
-    //private static String url ="jdbc:postgresql://localhost:5432/FSI_GestionAdmin";
-    private static String url ="jdbc:postgresql://localhost:5432/fsi_gestionadmin";
+    private static String url ="jdbc:postgresql://localhost:5432/FSI_GestionAdmin";
+    //private static String url ="jdbc:postgresql://localhost:5432/fsi_gestionadmin";
     private static String user ="postgres";
     private static String pass ="23032005";
 
