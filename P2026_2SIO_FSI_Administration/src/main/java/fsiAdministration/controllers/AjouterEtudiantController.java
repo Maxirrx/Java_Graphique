@@ -93,6 +93,35 @@ public class AjouterEtudiantController extends MenuController implements Initial
             etudDAO.create(newEtud);
         }
 
+        Stage stagea = (Stage) bRetour.getScene().getWindow();
+        stagea.close();
+
+
+        try {
+
+            // Charger le fichier FXML pour la pop-up
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_accueil.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            AccueilController accueilController = fxmlLoader.getController();
+
+            // Créer une nouvelle fenêtre (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("Accueil FSI ADMINISTRATION");
+            stage.setScene(new Scene(root));
+
+            // Configurer la fenêtre en tant que modal
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            stage.show();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML

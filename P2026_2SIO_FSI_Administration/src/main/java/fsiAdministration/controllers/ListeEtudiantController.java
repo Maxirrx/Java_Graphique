@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class ListeEtudiantController extends MenuController implements Initializable {
     @FXML
-    private TableView<Etudiant> tvEtudiants;
+    private TableView<Etudiant> l:;
 
     @FXML
     private TableColumn<Etudiant, String> tcNomEtud;

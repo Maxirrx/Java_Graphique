@@ -1,8 +1,10 @@
 package fsiAdministration.BO;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Section {
     private int idSection;
-    private String libelleSection;
+    private SimpleStringProperty libelleSection;
 
     public int getIdSection() {
         return idSection;
@@ -13,22 +15,25 @@ public class Section {
     }
 
     public String getLibelleSection() {
-        return libelleSection;
+        return libelleSection.get();
     }
 
     public void setLibelleSection(String libelleSection) {
-        this.libelleSection = libelleSection;
+        this.libelleSection.set(libelleSection);
+        ;
     }
 
     public Section(int idSection, String libelleSection) {
         this.idSection = idSection;
-        this.libelleSection = libelleSection;
+        this.libelleSection = new SimpleStringProperty(libelleSection);
     }
 
-    @Override
-    public String toString() {
+    public SimpleStringProperty libelleSectionProperty() {
         return libelleSection;
     }
+
+
+
 }
 
 
