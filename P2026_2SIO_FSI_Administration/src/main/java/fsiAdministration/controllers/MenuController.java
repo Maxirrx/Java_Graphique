@@ -194,4 +194,37 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void bListeCours(ActionEvent event) {
+        Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        StageAfermer.close();
+
+        try {
+
+
+            // Charger le fichier FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_liste_cours.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            AjoutSectionController abc = fxmlLoader.getController();
+
+            // Créer une nouvelle fenêtre (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("Ajout Section");
+            stage.setScene(new Scene(root));
+
+            // Configurer la fenêtre en tant que modal
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            stage.show();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

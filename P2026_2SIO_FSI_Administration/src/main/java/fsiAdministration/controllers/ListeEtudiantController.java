@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import java.net.URL;
@@ -14,13 +15,15 @@ import java.util.ResourceBundle;
 
 public class ListeEtudiantController extends MenuController implements Initializable {
     @FXML
-    private TableView<Etudiant> l:;
+    private TableView<Etudiant> l;
 
     @FXML
     private TableColumn<Etudiant, String> tcNomEtud;
 
     @FXML
     private TableColumn<Etudiant, String> tcPrenomEtud;
+    private ChoiceBox<Etudiant> tvEtudiants;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
