@@ -19,7 +19,7 @@ public class MenuController {
 
 
     @FXML
-    protected MenuItem bListeEtud, bAjouterEtud, bListeSection, bAjouterSection, bQuitter, bAccueil;
+    protected MenuItem bListeEtud, bAjouterEtud, bListeSection, bAjouterSection, bQuitter, bAccueil, bListeEtuSex, bListeCourSex, bAjouterCours, bListeCours;
 
 
 
@@ -138,16 +138,16 @@ public class MenuController {
 
 
             // Charger le fichier FXML
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_liste_etudiant.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_liste_section.fxml"));
             Parent root = fxmlLoader.load();
 
 
             // Obtenir le contrôleur de la nouvelle fenetre
-            ListeEtudiantController abc = fxmlLoader.getController();
+            ListeSectionController abc = fxmlLoader.getController();
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
-            stage.setTitle("Liste etudiant");
+            stage.setTitle("Liste Section");
             stage.setScene(new Scene(root));
 
             // Configurer la fenêtre en tant que modal
@@ -164,6 +164,34 @@ public class MenuController {
 
     @FXML
     public void bAjouterSectionClick(ActionEvent event) {
+        Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        StageAfermer.close();
 
+        try {
+
+
+            // Charger le fichier FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_ajout_section.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            AjoutSectionController abc = fxmlLoader.getController();
+
+            // Créer une nouvelle fenêtre (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("Ajout Section");
+            stage.setScene(new Scene(root));
+
+            // Configurer la fenêtre en tant que modal
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            stage.show();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

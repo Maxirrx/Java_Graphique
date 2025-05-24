@@ -24,8 +24,16 @@
                   <items>
                     <MenuItem fx:id="bListeSection" mnemonicParsing="false" onAction="#bListeSectionClick" text="Liste des sections" />
                         <MenuItem fx:id="bAjouterSection" mnemonicParsing="false" onAction="#bAjouterSectionClick" text="ajouter une section" />
+                        <MenuItem fx:id="bListeEtuSex" mnemonicParsing="false" text="Liste etudiant section" />
+                        <MenuItem  fx:id="bListeCourSex" mnemonicParsing="false" text="Liste cours section" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Gestion cours">
+                    <items>
+                      <MenuItem fx:id="bListeCours" mnemonicParsing="false" text="Liste des cours" />
+                        <MenuItem fx:id="bAjouterCours" mnemonicParsing="false" text="Ajouter un cours" />
+                    </items>
+                  </Menu>
                   <Menu fx:id="bAutres" mnemonicParsing="false" text="Autres">
                      <items>
                         <MenuItem fx:id="bAccueil" mnemonicParsing="false" onAction="#bAccueilClick" text="Accueil" />
