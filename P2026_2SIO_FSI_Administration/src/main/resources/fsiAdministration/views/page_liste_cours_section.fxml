@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fsiAdministration.controllers.ListeCoursController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fsiAdministration.controllers.ListeCourSectionController">
     <children>
         <VBox layoutX="-1.0" prefHeight="478.0" prefWidth="729.0">
             <MenuBar prefHeight="26.0" prefWidth="711.0">
@@ -41,9 +41,10 @@
                     </Menu>
                 </menus>
             </MenuBar>
-            <TableView fx:id="tvCours" prefHeight="259.0" prefWidth="730.0">
+            <TableView fx:id="tvCoursSection" prefHeight="259.0" prefWidth="730.0">
                 <columns>
-                    <TableColumn fx:id="tclibCours" prefWidth="356.00000607967377" text="Libellé" />
+                    <TableColumn fx:id="tcCours" prefWidth="356.00000607967377" text="Libellé" />
+                    <TableColumn fx:id="tcSection" prefWidth="140.00006103515625" text="Voir plus" />
                 </columns>
             </TableView>
 

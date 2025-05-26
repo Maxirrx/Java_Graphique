@@ -1,5 +1,6 @@
 package fsiAdministration.controllers;
 
+import fsiAdministration.BO.Etudiant;
 import fsiAdministration.BO.Section;
 import fsiAdministration.DAO.SectionDAO;
 import javafx.collections.FXCollections;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.util.List;
@@ -24,18 +26,19 @@ public class ListeSectionController extends MenuController implements Initializa
     @FXML
     private TableColumn<Section, String> voirSection;
 
+    SectionDAO sexDAO = new SectionDAO();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        SectionDAO sexDAO = new SectionDAO();
-        List<Section> MesSections = sexDAO.findAll();
-        ObservableList<Section> MesSectionsOL= FXCollections.observableArrayList(MesSections);
-        tcNomSection.setCellValueFactory(cellData -> cellData.getValue().libelleSectionProperty());
-        voirSection.setCellValueFactory(cellData -> cellData.getValue().libelleSectionProperty());
 
-        tvSections.setItems(MesSectionsOL);
+        tcNomSection.setCellValueFactory(new PropertyValueFactory<>("libelleSection"));
+        voirSection.setCellValueFactory(new PropertyValueFactory<>("idSection"));
+
+        ObservableList<Section> mesSex = FXCollections.observableArrayList(sexDAO.findAll());
+
+        tvSections.setItems(mesSex);
 
     }
 }

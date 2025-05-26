@@ -1,8 +1,8 @@
 package fsiAdministration.controllers;
 
-import fsiAdministration.BO.Etudiant;
+import fsiAdministration.BO.Cours;
 import fsiAdministration.BO.Section;
-import fsiAdministration.DAO.EtudiantDAO;
+import fsiAdministration.DAO.CoursDAO;
 import fsiAdministration.DAO.SectionDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,23 +13,40 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class AjoutSectionController extends MenuController implements Initializable {
+public class AjouterCoursController extends MenuController implements Initializable {
 
     @FXML
-    private TextField tflibelle;
+    private TextField tflibelle, tfdesc;
     @FXML
     private Button bRetour;
 
+    @FXML
+    private ListView<Section> lvSectionEtud ;
+
+
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+        List<Section> lessections = new ArrayList<>();
+        SectionDAO sectiondao = new SectionDAO();
+        lessections = sectiondao.findAll();
+
+
+
+        ObservableList<Section> section = FXCollections.observableArrayList(lessections);
+        lvSectionEtud.setItems(section);
+    }
 
     @FXML
     public void bRetourClick(ActionEvent event) {
@@ -67,14 +84,17 @@ public class AjoutSectionController extends MenuController implements Initializa
     public void bEnregistrerClick(ActionEvent event) {
 
         String nom= tflibelle.getText();
+        String desc= tfdesc.getText();
+        int section = lvSectionEtud.getItems().get(lvSectionEtud.getSelectionModel().getSelectedIndex()).getIdSection();
 
 
-        if(!tflibelle.getText().isEmpty()) {
-            Section newsex = new Section(0, nom);
+
+        if(!tflibelle.getText().isEmpty() && !tfdesc.getText().isEmpty() && !lvSectionEtud.getItems().isEmpty()) {
+            Cours newcours = new Cours(0, nom, desc, section);
             System.out.println("on est bon");
 
-            SectionDAO sectionDAO = new SectionDAO();
-            sectionDAO.create(newsex);
+            CoursDAO coursDAO = new CoursDAO();
+            coursDAO.create(newcours);
         }
 
         Stage stagea = (Stage) bRetour.getScene().getWindow();

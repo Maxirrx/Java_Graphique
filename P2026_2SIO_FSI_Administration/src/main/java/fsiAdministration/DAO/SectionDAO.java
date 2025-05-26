@@ -3,10 +3,7 @@ package fsiAdministration.DAO;
 import fsiAdministration.BO.Etudiant;
 import fsiAdministration.BO.Section;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +11,24 @@ public class SectionDAO extends DAO<Section>{
 
     @Override
     public boolean create(Section obj) {
-        return false;
+        boolean controle = false;
+        try{
+            Connection connect = BDDManager.getInstance();
+            String sql = "Insert into Section(libellesection) values (?);";
+            PreparedStatement statement = connect.prepareStatement(sql);
+            statement.setString(1,obj.getLibelleSection());
+
+
+            int rowsInserer = statement.executeUpdate();
+            if (rowsInserer > 0) {
+                controle= true;
+            }
+
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return controle;
     }
 
     @Override
@@ -29,7 +43,27 @@ public class SectionDAO extends DAO<Section>{
 
     @Override
     public Section find(int id) {
-        return null;
+        Section section = null;
+
+        try {
+            Connection connect = BDDManager.getInstance();
+            String sql = "SELECT * FROM section WHERE idsection = ?";
+
+            PreparedStatement statement = connect.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                int idSection = rs.getInt("idsection");
+                String libelle = rs.getString("libellesection");
+
+                section = new Section(idSection, libelle);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return section;
     }
 
     @Override
@@ -56,4 +90,5 @@ public class SectionDAO extends DAO<Section>{
         }
         return sections;
     }
+
 }

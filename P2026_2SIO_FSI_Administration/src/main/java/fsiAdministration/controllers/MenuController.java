@@ -196,7 +196,40 @@ public class MenuController {
     }
 
     @FXML
-    public void bListeCours(ActionEvent event) {
+    public void bListeEtuSexClick(ActionEvent event) {
+        Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        StageAfermer.close();
+
+        try {
+
+
+            // Charger le fichier FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_liste_etu_section.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            ListeEtuSectionController abc = fxmlLoader.getController();
+
+            // Créer une nouvelle fenêtre (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("Ajout Section");
+            stage.setScene(new Scene(root));
+
+            // Configurer la fenêtre en tant que modal
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            stage.show();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void bListeCoursClick(ActionEvent event) {
         Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
         StageAfermer.close();
 
@@ -209,7 +242,105 @@ public class MenuController {
 
 
             // Obtenir le contrôleur de la nouvelle fenetre
-            AjoutSectionController abc = fxmlLoader.getController();
+            ListeCoursController abc = fxmlLoader.getController();
+
+            // Créer une nouvelle fenêtre (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("Ajout Section");
+            stage.setScene(new Scene(root));
+
+            // Configurer la fenêtre en tant que modal
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            stage.show();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void bListeCourSexClick(ActionEvent event) {
+        Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        StageAfermer.close();
+
+        try {
+
+
+            // Charger le fichier FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_liste_cours_section.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            ListeCourSectionController abc = fxmlLoader.getController();
+
+            // Créer une nouvelle fenêtre (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("Ajout Section");
+            stage.setScene(new Scene(root));
+
+            // Configurer la fenêtre en tant que modal
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            stage.show();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void bAjouterCoursClick(ActionEvent event) {
+        Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        StageAfermer.close();
+
+        try {
+
+
+            // Charger le fichier FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_ajout_cours.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            AjouterCoursController abc = fxmlLoader.getController();
+
+            // Créer une nouvelle fenêtre (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("Ajout Section");
+            stage.setScene(new Scene(root));
+
+            // Configurer la fenêtre en tant que modal
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            stage.show();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void bAjouterSection(ActionEvent event) {
+        Stage StageAfermer = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        StageAfermer.close();
+
+        try {
+
+
+            // Charger le fichier FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_ajout_section.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            ListeCourSectionController abc = fxmlLoader.getController();
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
