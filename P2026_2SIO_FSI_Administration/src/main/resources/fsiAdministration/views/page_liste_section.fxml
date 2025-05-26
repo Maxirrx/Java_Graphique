@@ -23,14 +23,14 @@
                         <items>
                             <MenuItem fx:id="bListeSection" mnemonicParsing="false" onAction="#bListeSectionClick" text="Liste des sections" />
                             <MenuItem fx:id="bAjouterSection" mnemonicParsing="false" onAction="#bAjouterSectionClick" text="ajouter une section" />
-                            <MenuItem fx:id="bListeEtuSex" mnemonicParsing="false" text="Liste etudiant section" />
-                            <MenuItem fx:id="bListeCourSex" mnemonicParsing="false" text="Liste cours section" />
+                            <MenuItem fx:id="bListeEtuSex" mnemonicParsing="false" onAction="#bListeEtuSexClick" text="Liste etudiant section" />
+                            <MenuItem  fx:id="bListeCourSex" mnemonicParsing="false" onAction="#bListeCourSexClick" text="Liste cours section" />
                         </items>
                     </Menu>
                     <Menu mnemonicParsing="false" text="Gestion cours">
                         <items>
-                            <MenuItem fx:id="bListeCours" mnemonicParsing="false" text="Liste des cours" />
-                            <MenuItem fx:id="bAjouterCours" mnemonicParsing="false" text="Ajouter un cours" />
+                            <MenuItem fx:id="bListeCours" mnemonicParsing="false" onAction="#bListeCoursClick" text="Liste des cours" />
+                            <MenuItem fx:id="bAjouterCours" mnemonicParsing="false" onAction="#bAjouterCoursClick" text="Ajouter un cours" />
                         </items>
                     </Menu>
                     <Menu fx:id="bAutres" mnemonicParsing="false" text="Autres">
@@ -41,10 +41,10 @@
                     </Menu>
                 </menus>
             </MenuBar>
-            <TableView fx:id="tvEtudiants" prefHeight="259.0" prefWidth="730.0">
+            <TableView fx:id="tvSections" prefHeight="259.0" prefWidth="730.0">
                 <columns>
-                    <TableColumn fx:id="tcNomEtud" prefWidth="356.00000607967377" text="Libellé" />
-                    <TableColumn fx:id="tcPrenomEtud" prefWidth="140.00006103515625" text="Voir plus" />
+                    <TableColumn fx:id="tcNomSection" prefWidth="356.00000607967377" text="Libellé" />
+                    <TableColumn fx:id="voirSection" prefWidth="140.00006103515625" text="Voir plus" />
                 </columns>
             </TableView>
 

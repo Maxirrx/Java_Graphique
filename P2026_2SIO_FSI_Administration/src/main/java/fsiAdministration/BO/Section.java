@@ -28,12 +28,12 @@ public class Section {
         this.libelleSection = new SimpleStringProperty(libelleSection);
     }
 
-    public SimpleStringProperty libelleSectionProperty() {
-        return libelleSection;
+
+
+    @Override
+    public String toString() {
+        return libelleSection.get() ;
     }
-
-
-
 }
 
 

@@ -1,6 +1,7 @@
 package fsiAdministration.DAO;
 
 import fsiAdministration.BO.Etudiant;
+import fsiAdministration.BO.Section;
 import fsiAdministration.BO.Utilisateur;
 
 import java.sql.*;
@@ -108,4 +109,52 @@ public class EtudiantDAO extends DAO<Etudiant>{
         }
         return mesEtud;
     }
-}
+
+
+    public List findAllBysection() {
+        List<Etudiant> mesEtud = new ArrayList<>();
+        Etudiant etud;
+
+        try {
+            Connection connect = BDDManager.getInstance();
+
+            String sql = "SELECT * FROM etudiant";
+            Statement ps = connect.createStatement();
+            ResultSet rs = ps.executeQuery(sql);
+            while(rs.next()) {
+                etud = new Etudiant(
+                        rs.getInt("idEtudiant"),
+                        rs.getString ("nomEtudiant"),
+                        rs.getString("prenomEtudiant"),
+                        rs.getInt("idSection")
+                );
+                mesEtud.add(etud);
+            }
+
+        } catch (SQLException e) {
+            return null;
+        }
+        return mesEtud;
+    }
+
+    public int nbEtubySection(int id) {
+        int nbsection = 0;
+
+        try {
+            Connection connect = BDDManager.getInstance();
+            String sql = "SELECT count(*) as nb FROM Etudiant WHERE idsection = ?";
+
+            PreparedStatement statement = connect.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                nbsection = rs.getInt("nb");
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return nbsection;
+    }}
