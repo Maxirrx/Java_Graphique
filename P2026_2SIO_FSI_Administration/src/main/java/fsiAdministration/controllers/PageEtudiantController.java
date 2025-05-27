@@ -17,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -56,7 +57,27 @@ public class PageEtudiantController extends MenuController implements Initializa
 
 
     @FXML
-    public void bmodifclick(ActionEvent event) {}
+    public void bmodifclick(ActionEvent event) {
+        Stage stagea = (Stage) nom.getScene().getWindow();
+        stagea.close();
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_modif_etudiant.fxml"));
+            Parent root = loader.load();
+
+            ModifEtudiantController controller = loader.getController();
+            controller.setlesdonne(etu);
+
+            Stage stage = new Stage();
+            stage.setTitle("Modifier l'étudiant");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void bsuppclick(ActionEvent event) {

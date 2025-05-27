@@ -65,8 +65,8 @@ public class EtudiantDAO extends DAO<Etudiant>{
             PreparedStatement statement = connect.prepareStatement(sql);
             statement.setString(1, obj.getNomEtudiant());
             statement.setString(2, obj.getPrenomEtudiant());
-            statement.setInt(3, obj.getIdSection());
-            statement.setDate(4, obj.getDatedenaissance());
+            statement.setDate(3, obj.getDatedenaissance());
+            statement.setInt(4, obj.getIdSection());
             statement.setInt(5, obj.getIdEtudiant());
 
             int rowsUpdated = statement.executeUpdate();
