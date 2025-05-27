@@ -2,11 +2,15 @@ package fsiAdministration.BO;
 
 import javafx.beans.property.SimpleStringProperty;
 
+import java.sql.Date;
+
+
 public class Etudiant {
 
     private int idEtudiant;
     private SimpleStringProperty nomEtudiant;
     private SimpleStringProperty prenomEtudiant;
+    private Date datedenaissance;
     private int idSection;
 
     public int getIdSection() {
@@ -19,12 +23,21 @@ public class Etudiant {
 
 
 
-    public Etudiant(int idEtudiant, String nomEtudiant, String prenomEtudiant, int idSection) {
+    public Etudiant(int idEtudiant, String nomEtudiant, String prenomEtudiant,Date datedenaissance, int idSection) {
         this.idEtudiant = idEtudiant;
         this.nomEtudiant = new SimpleStringProperty(nomEtudiant);
         this.prenomEtudiant = new SimpleStringProperty(prenomEtudiant);
+        this.datedenaissance = datedenaissance;
         this.idSection = idSection;
 
+    }
+
+    public Date getDatedenaissance() {
+        return datedenaissance;
+    }
+
+    public void setDatedenaissance(Date datedenaissance) {
+        this.datedenaissance = datedenaissance;
     }
 
     public int getIdEtudiant() {

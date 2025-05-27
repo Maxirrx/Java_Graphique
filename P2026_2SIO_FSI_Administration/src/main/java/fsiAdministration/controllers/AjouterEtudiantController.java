@@ -12,14 +12,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -28,6 +26,9 @@ public class AjouterEtudiantController extends MenuController implements Initial
 
     @FXML
     private TextField tfNomEtud, tfPrenomEtud;
+
+    @FXML
+    private DatePicker datenaissance;
     @FXML
     private Button bRetour;
     @FXML
@@ -84,9 +85,10 @@ public class AjouterEtudiantController extends MenuController implements Initial
         String nom= tfNomEtud.getText();
         String prenom = tfPrenomEtud.getText();
         int section = lvSectionEtud.getItems().get(lvSectionEtud.getSelectionModel().getSelectedIndex()).getIdSection();
+        Date date = Date.valueOf(datenaissance.getValue());
 
         if(!tfNomEtud.getText().isEmpty() && tfPrenomEtud.getText() != "" && !lvSectionEtud.getItems().isEmpty()) {
-            Etudiant newEtud = new Etudiant(0, nom, prenom, section);
+            Etudiant newEtud = new Etudiant(0, nom, prenom, date,section);
             System.out.println("on est bon");
 
             EtudiantDAO etudDAO = new EtudiantDAO();

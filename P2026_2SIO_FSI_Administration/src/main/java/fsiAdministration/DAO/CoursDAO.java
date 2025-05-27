@@ -32,7 +32,20 @@ public class CoursDAO extends DAO<Cours> {
 
     @Override
     public boolean delete(Cours obj) {
-        return false;
+        String sql = "DELETE FROM Cours WHERE idCours = ?";
+        try {
+            Connection connect = BDDManager.getInstance();
+            PreparedStatement statement = connect.prepareStatement(sql);
+
+            statement.setInt(1, obj.getIdcours());
+
+            int rowsDeleted = statement.executeUpdate();
+            return rowsDeleted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

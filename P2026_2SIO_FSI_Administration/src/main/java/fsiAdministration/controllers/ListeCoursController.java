@@ -41,6 +41,18 @@ public class ListeCoursController extends MenuController implements Initializabl
         ObservableList<Cours> mescours = FXCollections.observableArrayList(coursDAO.findAll());
 
         tvCours.setItems(mescours);
+
+        tvCours.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                Cours coursclick = tvCours.getSelectionModel().getSelectedItem();
+                if (coursclick != null) {
+
+                    Stage currentStage = (Stage) tvCours.getScene().getWindow();
+                    redirigerVersCours(coursclick, currentStage);
+
+                }
+            }
+        });
     }
 
     private void redirigerVersCours(Cours cours, Stage currentStage) {

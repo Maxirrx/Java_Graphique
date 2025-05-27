@@ -17,6 +17,7 @@ CREATE TABLE ETUDIANT(
    idEtudiant serial,
    nomEtudiant VARCHAR(50) NOT NULL,
    prenomEtudiant VARCHAR(50) NOT NULL,
+   datedenaissance date not null,
    idSection INT NOT NULL,
    CONSTRAINT eleve_PK PRIMARY KEY(idEtudiant),
    CONSTRAINT eleve_section_FK FOREIGN KEY(idSection) REFERENCES SECTION(idSection)

@@ -1,8 +1,7 @@
 package fsiAdministration.controllers;
 
 import fsiAdministration.BO.Etudiant;
-import fsiAdministration.DAO.CoursDAO;
-import fsiAdministration.DAO.EtudiantDAO;
+import fsiAdministration.BO.Section;
 import fsiAdministration.DAO.SectionDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,44 +10,38 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PageEtudiantController extends MenuController implements Initializable {
+public class PageSectionController  extends MenuController implements Initializable {
 
-    private Etudiant etu;
+    private Section section;
 
     @FXML
-    private Text nom, prenom, datedenaissance, section, cours;
+    private Text nom;
 
     @FXML
     private Button bmodif, bsupp;
+
     SectionDAO sectionDAO = new SectionDAO();
-    EtudiantDAO etudiantDAO = new EtudiantDAO();
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
     }
 
-
-    public void setEtudiant(Etudiant e) {
-        this.etu = e;
-        Afficherlesdonnee(etu);
+    public void setSection(Section s) {
+        this.section = s;
+        Afficherlesdonnee(section);
     }
 
-    public void Afficherlesdonnee(Etudiant e) {
-        nom.setText(e.getNomEtudiant());
-        prenom.setText(e.getPrenomEtudiant());
-        section.setText(sectionDAO.find(e.getIdSection()).getLibelleSection());
-        datedenaissance.setText(String.valueOf(e.getDatedenaissance()));
+    public void Afficherlesdonnee(Section s) {
+        nom.setText(s.getLibelleSection());
+
 
 
     }
@@ -60,7 +53,7 @@ public class PageEtudiantController extends MenuController implements Initializa
 
     @FXML
     public void bsuppclick(ActionEvent event) {
-        etudiantDAO.delete(etu);
+        sectionDAO.delete(section);
         Stage currentStage = (Stage) nom.getScene().getWindow();
         currentStage.close();
 
@@ -90,4 +83,3 @@ public class PageEtudiantController extends MenuController implements Initializa
         }
     }
 }
-
