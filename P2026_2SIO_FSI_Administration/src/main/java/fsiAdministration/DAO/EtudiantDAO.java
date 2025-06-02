@@ -16,11 +16,12 @@ public class EtudiantDAO extends DAO<Etudiant>{
         boolean controle = false;
         try{
             Connection connect = BDDManager.getInstance();
-            String sql = "Insert into Etudiant(nomEtudiant, prenomEtudiant, idSection) values (?,?,?);";
+            String sql = "Insert into Etudiant(nomEtudiant, prenomEtudiant, datedenaissance,idSection) values (?,?,?,?);";
             PreparedStatement statement = connect.prepareStatement(sql);
             statement.setString(1,obj.getNomEtudiant());
             statement.setString(2,obj.getPrenomEtudiant());
-            statement.setInt(3,obj.getIdSection());
+            statement.setDate(3, obj.getDatedenaissance());
+            statement.setInt(4,obj.getIdSection());
 
             int rowsInserer = statement.executeUpdate();
             if (rowsInserer > 0) {
@@ -38,7 +39,7 @@ public class EtudiantDAO extends DAO<Etudiant>{
 
     @Override
     public boolean delete(Etudiant obj) {
-        String sql = "DELETE FROM Etudiant WHERE id = ?";
+        String sql = "DELETE FROM Etudiant WHERE idEtudiant = ?";
         try {
              Connection connect = BDDManager.getInstance();
              PreparedStatement statement = connect.prepareStatement(sql);
@@ -59,13 +60,14 @@ public class EtudiantDAO extends DAO<Etudiant>{
         boolean controle = false;
         try {
             Connection connect = BDDManager.getInstance();
-            String sql = "UPDATE Etudiant SET nomEtudiant = ?, prenomEtudiant = ?, idSection = ? WHERE idEtudiant = ?";
+            String sql = "UPDATE Etudiant SET nomEtudiant = ?, prenomEtudiant = ?, datedenaissance = ?,idSection = ? WHERE idEtudiant = ?";
 
             PreparedStatement statement = connect.prepareStatement(sql);
             statement.setString(1, obj.getNomEtudiant());
             statement.setString(2, obj.getPrenomEtudiant());
-            statement.setInt(3, obj.getIdSection());
-            statement.setInt(4, obj.getIdEtudiant());
+            statement.setDate(3, obj.getDatedenaissance());
+            statement.setInt(4, obj.getIdSection());
+            statement.setInt(5, obj.getIdEtudiant());
 
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
@@ -99,6 +101,7 @@ public class EtudiantDAO extends DAO<Etudiant>{
                         rs.getInt("idEtudiant"),
                         rs.getString ("nomEtudiant"),
                         rs.getString("prenomEtudiant"),
+                        rs.getDate ("datedenaissance"),
                         rs.getInt("idSection")
                         );
                 mesEtud.add(etud);
@@ -126,6 +129,7 @@ public class EtudiantDAO extends DAO<Etudiant>{
                         rs.getInt("idEtudiant"),
                         rs.getString ("nomEtudiant"),
                         rs.getString("prenomEtudiant"),
+                        rs.getDate ("datedenaissance"),
                         rs.getInt("idSection")
                 );
                 mesEtud.add(etud);

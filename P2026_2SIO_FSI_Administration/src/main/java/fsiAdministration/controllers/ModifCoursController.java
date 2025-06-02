@@ -1,8 +1,9 @@
 package fsiAdministration.controllers;
 
+import fsiAdministration.BO.Cours;
 import fsiAdministration.BO.Etudiant;
 import fsiAdministration.BO.Section;
-import fsiAdministration.DAO.EtudiantDAO;
+import fsiAdministration.DAO.CoursDAO;
 import fsiAdministration.DAO.SectionDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,31 +13,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AjouterEtudiantController extends MenuController implements Initializable {
-
+public class ModifCoursController extends MenuController implements Initializable {
     @FXML
-    private TextField tfNomEtud, tfPrenomEtud;
-
-    @FXML
-    private DatePicker datenaissance;
+    private TextField tflibelle, tfdesc;
     @FXML
     private Button bRetour;
+
+    private int idcours;
     @FXML
     private ListView<Section> lvSectionEtud ;
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         List<Section> lessections = new ArrayList<>();
         SectionDAO sectiondao = new SectionDAO();
         lessections = sectiondao.findAll();
@@ -82,17 +83,18 @@ public class AjouterEtudiantController extends MenuController implements Initial
     @FXML
     public void bEnregistrerClick(ActionEvent event) {
 
-        String nom= tfNomEtud.getText();
-        String prenom = tfPrenomEtud.getText();
+        String nom= tflibelle.getText();
+        String desc= tfdesc.getText();
         int section = lvSectionEtud.getItems().get(lvSectionEtud.getSelectionModel().getSelectedIndex()).getIdSection();
-        Date date = Date.valueOf(datenaissance.getValue());
 
-        if(!tfNomEtud.getText().isEmpty() && tfPrenomEtud.getText() != "" && !lvSectionEtud.getItems().isEmpty()) {
-            Etudiant newEtud = new Etudiant(0, nom, prenom, date,section);
+
+
+        if(!tflibelle.getText().isEmpty() && !tfdesc.getText().isEmpty() && !lvSectionEtud.getItems().isEmpty()) {
+            Cours newcours = new Cours(idcours, nom, desc, section);
             System.out.println("on est bon");
 
-            EtudiantDAO etudDAO = new EtudiantDAO();
-            etudDAO.create(newEtud);
+            CoursDAO coursDAO = new CoursDAO();
+            coursDAO.update(newcours);
         }
 
         Stage stagea = (Stage) bRetour.getScene().getWindow();
@@ -129,7 +131,22 @@ public class AjouterEtudiantController extends MenuController implements Initial
     @FXML
     public void bEffacerClick(ActionEvent event) {
 
-        tfNomEtud.clear();
-        tfPrenomEtud.clear();
+        tflibelle.clear();
+    }
+
+    public void setlesdonne(Cours cours) {
+        tflibelle.setText(cours.getLibellecours());
+        tfdesc.setText(cours.getDescriptioncours());
+        this.idcours = cours.getIdcours();
+
+        int idSectionEtud = cours.getIdsection();
+        Section sectionAAfficher = lvSectionEtud.getItems().stream()
+                .filter(sec -> sec.getIdSection() == idSectionEtud)
+                .findFirst()
+                .orElse(null);
+
+        if (sectionAAfficher != null) {
+            lvSectionEtud.getSelectionModel().select(sectionAAfficher);
+        }
     }
 }

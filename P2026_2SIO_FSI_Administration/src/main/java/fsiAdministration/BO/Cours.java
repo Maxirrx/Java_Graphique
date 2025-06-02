@@ -9,6 +9,9 @@ public class Cours {
     private String descriptioncours;
     private int idsection;
 
+    public Cours() {
+    }
+
     public int getIdcours() {
         return idcours;
     }

@@ -1,8 +1,8 @@
 package fsiAdministration.controllers;
 
+import fsiAdministration.BO.Cours;
 import fsiAdministration.BO.Etudiant;
 import fsiAdministration.DAO.CoursDAO;
-import fsiAdministration.DAO.EtudiantDAO;
 import fsiAdministration.DAO.SectionDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,45 +11,43 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PageEtudiantController extends MenuController implements Initializable {
+public class PageCoursController  extends MenuController implements Initializable {
 
-    private Etudiant etu;
+    Cours cours = new Cours();
 
     @FXML
-    private Text nom, prenom, datedenaissance, section, cours;
+    private Text nom, desc, section ;
 
     @FXML
     private Button bmodif, bsupp;
+
+    CoursDAO coursDAO = new CoursDAO();
+
     SectionDAO sectionDAO = new SectionDAO();
-    EtudiantDAO etudiantDAO = new EtudiantDAO();
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    public void setCours(Cours cour) {
+        this.cours = cour;
+        Afficherlesdonnee(cours);
     }
 
 
-    public void setEtudiant(Etudiant e) {
-        this.etu = e;
-        Afficherlesdonnee(etu);
-    }
-
-    public void Afficherlesdonnee(Etudiant e) {
-        nom.setText(e.getNomEtudiant());
-        prenom.setText(e.getPrenomEtudiant());
-        section.setText(sectionDAO.find(e.getIdSection()).getLibelleSection());
-        datedenaissance.setText(String.valueOf(e.getDatedenaissance()));
+    public void Afficherlesdonnee(Cours c) {
+        nom.setText(c.getLibellecours());
+        desc.setText(c.getDescriptioncours());
+        section.setText(sectionDAO.find(c.getIdsection()).getLibelleSection());
 
 
     }
@@ -62,11 +60,11 @@ public class PageEtudiantController extends MenuController implements Initializa
         stagea.close();
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_modif_etudiant.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_modif_cours.fxml"));
             Parent root = loader.load();
 
-            ModifEtudiantController controller = loader.getController();
-            controller.setlesdonne(etu);
+            ModifCoursController controller = loader.getController();
+            controller.setlesdonne(cours);
 
             Stage stage = new Stage();
             stage.setTitle("Modifier l'étudiant");
@@ -81,7 +79,7 @@ public class PageEtudiantController extends MenuController implements Initializa
 
     @FXML
     public void bsuppclick(ActionEvent event) {
-        etudiantDAO.delete(etu);
+        coursDAO.delete(cours);
         Stage currentStage = (Stage) nom.getScene().getWindow();
         currentStage.close();
 
@@ -111,4 +109,3 @@ public class PageEtudiantController extends MenuController implements Initializa
         }
     }
 }
-

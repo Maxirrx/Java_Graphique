@@ -33,7 +33,20 @@ public class SectionDAO extends DAO<Section>{
 
     @Override
     public boolean delete(Section obj) {
-        return false;
+        String sql = "DELETE FROM Section WHERE idSection = ?";
+        try {
+            Connection connect = BDDManager.getInstance();
+            PreparedStatement statement = connect.prepareStatement(sql);
+
+            statement.setInt(1, obj.getIdSection());
+
+            int rowsDeleted = statement.executeUpdate();
+            return rowsDeleted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

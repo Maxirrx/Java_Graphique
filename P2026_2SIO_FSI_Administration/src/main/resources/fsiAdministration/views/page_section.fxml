@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fsiAdministration.controllers.PageEtudiantController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fsiAdministration.controllers.PageSectionController">
    <children>
       <VBox layoutX="-1.0" prefHeight="48.0" prefWidth="729.0">
          <children>
@@ -46,19 +46,13 @@
              </MenuBar>
          </children>
       </VBox>
-      <Label fx:id="idbv" alignment="TOP_CENTER" layoutX="-1.0" layoutY="38.0" prefHeight="40.0" prefWidth="310.0" text="Information Etudiant" textFill="#024010">
+      <Label fx:id="idbv" alignment="TOP_CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="40.0" prefWidth="310.0" text="Information Etudiant" textFill="#024010">
          <font>
             <Font name="Bell MT Bold" size="22.0" />
          </font>
       </Label>
-      <Text layoutX="56.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="65.13671875" />
-      <Text layoutX="56.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom" wrappingWidth="65.13671875" />
-      <Text layoutX="56.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de Naissance" wrappingWidth="108.13671875" />
-      <Text layoutX="56.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Section" wrappingWidth="65.13671875" />
-      <Text fx:id="nom" layoutX="200.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="65.13671875" />
-      <Text fx:id="prenom" layoutX="200.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="65.13671875" />
-      <Text fx:id="datedenaissance" layoutX="200.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="108.13671875" />
-      <Text fx:id="section" layoutX="200.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="181.13671875" />
+      <Text layoutX="56.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de la section" wrappingWidth="121.13671875" />
+      <Text fx:id="nom" layoutX="194.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="388.13671875" />
       <Button fx:id="bmodif" layoutX="56.0" layoutY="263.0" mnemonicParsing="false" onAction="#bmodifclick" prefHeight="48.0" prefWidth="108.0" text="Modifier" />
       <Button fx:id="bsupp" layoutX="200.0" layoutY="263.0" mnemonicParsing="false" onAction="#bsuppclick" prefHeight="48.0" prefWidth="108.0" text="Supprimer" />
    </children>
