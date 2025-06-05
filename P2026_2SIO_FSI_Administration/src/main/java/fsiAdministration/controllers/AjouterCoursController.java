@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,6 +96,24 @@ public class AjouterCoursController extends MenuController implements Initializa
 
             CoursDAO coursDAO = new CoursDAO();
             coursDAO.create(newcours);
+        } else {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/popup_alerte.fxml"));
+                Parent root = loader.load();
+
+                ControllerAlerte controller = loader.getController();
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+
+                stage.initModality(Modality.APPLICATION_MODAL);
+                controller.setErreurcode(2);
+
+                stage.show();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         Stage stagea = (Stage) bRetour.getScene().getWindow();

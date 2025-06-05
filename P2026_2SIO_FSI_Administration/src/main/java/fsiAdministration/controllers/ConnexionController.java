@@ -13,6 +13,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -39,10 +41,27 @@ public class ConnexionController implements Initializable {
         UtilisateurDAO userDAO = new UtilisateurDAO();
         Utilisateur user = userDAO.find(login, mdp);
 
-        mdp = "plus de mot de passe";
 
         if (user.getLoginUtilisateur() != null) {
             showAccueil();
+        } else {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/popup_alerte.fxml"));
+                Parent root = loader.load();
+
+                ControllerAlerte controller = loader.getController();
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+
+                stage.initModality(Modality.APPLICATION_MODAL);
+                controller.setErreurcode(1);
+
+                stage.show();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
