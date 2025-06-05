@@ -51,7 +51,7 @@
       </VBox>
       <VBox layoutX="-1.0" layoutY="54.0" prefHeight="200.0" prefWidth="729.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="730.0" text="AJOUT D'UN NOUVEL ETUDIANT" textAlignment="CENTER" textFill="#024010">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="730.0" text="MODIFICATION D'UN NOUVEL ETUDIANT" textAlignment="CENTER" textFill="#024010">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

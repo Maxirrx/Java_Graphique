@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -75,6 +76,24 @@ public class AjoutSectionController extends MenuController implements Initializa
 
             SectionDAO sectionDAO = new SectionDAO();
             sectionDAO.create(newsex);
+        } else {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/popup_alerte.fxml"));
+                Parent root = loader.load();
+
+                ControllerAlerte controller = loader.getController();
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+
+                stage.initModality(Modality.APPLICATION_MODAL);
+                controller.setErreurcode(2);
+
+                stage.show();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         Stage stagea = (Stage) bRetour.getScene().getWindow();
