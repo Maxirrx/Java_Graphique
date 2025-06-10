@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -24,12 +25,18 @@ import java.util.ResourceBundle;
 
 public class AccueilController extends MenuController implements Initializable {
 
-
+    @FXML
+    private Label idbv;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
 
+
+    }
+
+    public void setbienvenue() {
+        idbv.setText("BIENVENUE " + nomduuser);
 
     }
 }

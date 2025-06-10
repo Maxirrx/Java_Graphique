@@ -43,7 +43,7 @@
             </MenuBar>
             <TableView fx:id="tvCours" prefHeight="259.0" prefWidth="730.0">
                 <columns>
-                    <TableColumn fx:id="tclibCours" prefWidth="356.00000607967377" text="Libellé" />
+                    <TableColumn fx:id="tclibCours" prefWidth="356.00000607967377" text="Nom Cours" />
                 </columns>
             </TableView>
 

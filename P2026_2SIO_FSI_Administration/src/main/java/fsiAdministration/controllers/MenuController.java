@@ -22,10 +22,12 @@ public class MenuController {
     protected MenuItem bListeEtud, bAjouterEtud, bListeSection, bAjouterSection, bQuitter, bAccueil, bListeEtuSex, bListeCourSex, bAjouterCours, bListeCours;
 
 
+    protected String nomduuser;
 
 
-
-
+    public void setuti(String nom){
+        this.nomduuser = nom;
+    }
 
     @FXML
     public void bQuitterClick(ActionEvent event) {
@@ -45,7 +47,8 @@ public class MenuController {
 
             // Obtenir le contrôleur de la nouvelle fenetre
             AccueilController accueilController = fxmlLoader.getController();
-
+            accueilController.setuti(nomduuser);
+            accueilController.setbienvenue();
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
             stage.setTitle("Accueil FSI ADMINISTRATION");
@@ -78,6 +81,7 @@ public class MenuController {
 
             // Obtenir le contrôleur de la nouvelle fenetre
             ListeEtudiantController listeEtudiantController = fxmlLoader.getController();
+            listeEtudiantController.setuti(nomduuser);
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
@@ -110,6 +114,7 @@ public class MenuController {
 
             // Obtenir le contrôleur de la nouvelle fenetre
             AjouterEtudiantController ajouterEtudiantController = fxmlLoader.getController();
+            ajouterEtudiantController.setuti(nomduuser);
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
@@ -144,6 +149,7 @@ public class MenuController {
 
             // Obtenir le contrôleur de la nouvelle fenetre
             ListeSectionController abc = fxmlLoader.getController();
+            abc.setuti(nomduuser);
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
@@ -177,6 +183,7 @@ public class MenuController {
 
             // Obtenir le contrôleur de la nouvelle fenetre
             AjoutSectionController abc = fxmlLoader.getController();
+            abc.setuti(nomduuser);
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
@@ -210,6 +217,7 @@ public class MenuController {
 
             // Obtenir le contrôleur de la nouvelle fenetre
             ListeEtuSectionController abc = fxmlLoader.getController();
+            abc.setuti(nomduuser);
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
@@ -243,6 +251,7 @@ public class MenuController {
 
             // Obtenir le contrôleur de la nouvelle fenetre
             ListeCoursController abc = fxmlLoader.getController();
+            abc.setuti(nomduuser);
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
@@ -276,6 +285,7 @@ public class MenuController {
 
             // Obtenir le contrôleur de la nouvelle fenetre
             ListeCourSectionController abc = fxmlLoader.getController();
+            abc.setuti(nomduuser);
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
@@ -308,6 +318,7 @@ public class MenuController {
 
             // Obtenir le contrôleur de la nouvelle fenetre
             AjouterCoursController abc = fxmlLoader.getController();
+            abc.setuti(nomduuser);
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
@@ -341,6 +352,7 @@ public class MenuController {
 
             // Obtenir le contrôleur de la nouvelle fenetre
             ListeCourSectionController abc = fxmlLoader.getController();
+            abc.setuti(nomduuser);
 
             // Créer une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
