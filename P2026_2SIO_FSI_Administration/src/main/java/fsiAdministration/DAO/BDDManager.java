@@ -9,7 +9,7 @@ public class BDDManager {
     private static String url ="jdbc:postgresql://localhost:5432/FSI_GestionAdmin";
     //private static String url ="jdbc:postgresql://localhost:5432/fsi_gestionadmin";
     private static String user ="postgres";
-    private static String pass ="23032005";
+    private static String pass ="XjkXzD7avhgK7u4oX4A6";
 
     private static Connection connect;
 
