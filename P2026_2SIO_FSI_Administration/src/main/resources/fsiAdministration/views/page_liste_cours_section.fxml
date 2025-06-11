@@ -43,8 +43,8 @@
             </MenuBar>
             <TableView fx:id="tvCoursSection" prefHeight="259.0" prefWidth="730.0">
                 <columns>
-                    <TableColumn fx:id="tcCours" prefWidth="356.00000607967377" text="Libellé" />
-                    <TableColumn fx:id="tcSection" prefWidth="140.00006103515625" text="Voir plus" />
+                    <TableColumn fx:id="tcCours" prefWidth="356.00000607967377" text="Nom cour" />
+                    <TableColumn fx:id="tcSection" prefWidth="140.00006103515625" text="Nom section" />
                 </columns>
             </TableView>
 

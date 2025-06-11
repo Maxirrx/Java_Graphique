@@ -1,9 +1,16 @@
  plugins {
     id("java")
+    id("application")
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
+
+application {
+    mainModule = "fsiAdministration"
+    mainClass = "fsiAdministration.Main"
+}
 
 repositories {
     mavenCentral()

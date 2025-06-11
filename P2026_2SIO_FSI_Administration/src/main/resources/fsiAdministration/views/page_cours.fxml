@@ -46,7 +46,7 @@
              </MenuBar>
          </children>
       </VBox>
-      <Label fx:id="idbv" alignment="TOP_CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="40.0" prefWidth="310.0" text="Information Etudiant" textFill="#024010">
+      <Label fx:id="idbv" alignment="TOP_CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="40.0" prefWidth="310.0" text="Information Cours" textFill="#024010">
          <font>
             <Font name="Bell MT Bold" size="22.0" />
          </font>

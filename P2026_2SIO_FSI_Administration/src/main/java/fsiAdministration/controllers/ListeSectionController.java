@@ -30,7 +30,6 @@ public class ListeSectionController extends MenuController implements Initializa
     private TableColumn<Section, String> tcNomSection;
 
     @FXML
-    private TableColumn<Section, String> voirSection;
 
     SectionDAO sexDAO = new SectionDAO();
 
@@ -40,7 +39,6 @@ public class ListeSectionController extends MenuController implements Initializa
 
 
         tcNomSection.setCellValueFactory(new PropertyValueFactory<>("libelleSection"));
-        voirSection.setCellValueFactory(new PropertyValueFactory<>("idSection"));
 
         ObservableList<Section> mesSex = FXCollections.observableArrayList(sexDAO.findAll());
 

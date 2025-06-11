@@ -51,7 +51,25 @@ public class SectionDAO extends DAO<Section>{
 
     @Override
     public boolean update(Section obj) {
-        return false;
+        boolean controle = false;
+        try{
+            Connection connect = BDDManager.getInstance();
+            String sql = "UPDATE Section SET libellesection = ? where idSection = ?;";
+            PreparedStatement statement = connect.prepareStatement(sql);
+            statement.setString(1,obj.getLibelleSection());
+            statement.setInt(2,obj.getIdSection());
+
+
+            int rowsInserer = statement.executeUpdate();
+            if (rowsInserer > 0) {
+                controle= true;
+            }
+
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return controle;
     }
 
     @Override

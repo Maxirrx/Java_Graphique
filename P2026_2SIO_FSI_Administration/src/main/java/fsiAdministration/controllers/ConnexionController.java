@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class ConnexionController implements Initializable {
 
     @Override
@@ -34,28 +35,51 @@ public class ConnexionController implements Initializable {
 
     @FXML
     public void bConnexionClick(ActionEvent event) {
+
         String login = tfLogin.getText();
         String mdp = tfMDP.getText();
+        if (!login.isEmpty() || !mdp.isEmpty()) {
+
+            UtilisateurDAO userDAO = new UtilisateurDAO();
+            Utilisateur user = userDAO.find(login, mdp);
 
 
-        UtilisateurDAO userDAO = new UtilisateurDAO();
-        Utilisateur user = userDAO.find(login, mdp);
+            if (user.getLoginUtilisateur() != null) {
+                showAccueil(login);
+            } else {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/popup_alerte.fxml"));
+                    Parent root = loader.load();
 
+                    ControllerAlerte controller = loader.getController();
 
-        if (user.getLoginUtilisateur() != null) {
-            showAccueil();
-        } else {
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    controller.setErreurcode(1);
+
+                    stage.show();
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            }else{
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/popup_alerte.fxml"));
                 Parent root = loader.load();
 
                 ControllerAlerte controller = loader.getController();
 
+
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
 
                 stage.initModality(Modality.APPLICATION_MODAL);
-                controller.setErreurcode(1);
+                controller.setErreurcode(2);
+
 
                 stage.show();
 
@@ -63,9 +87,10 @@ public class ConnexionController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
+
     }
 
-    private void showAccueil(){
+    private void showAccueil(String login) {
          Stage stageP = (Stage) bConnexion.getScene().getWindow();
          //on ferme l'écran
           stageP.close();
@@ -85,8 +110,10 @@ public class ConnexionController implements Initializable {
 
                 // Configurer la fenêtre en tant que modal
                 stage.initModality(Modality.APPLICATION_MODAL);
+                accueilController.setuti(login);
+                accueilController.setbienvenue();
 
-                // Afficher la fenêtre et attendre qu'elle se ferme
+              // Afficher la fenêtre et attendre qu'elle se ferme
                 stage.show();
 
 
